@@ -89,14 +89,6 @@ export const dijkstra = (start: Node, end: Node, graph: Node[]) => {
         continue;
       }
 
-      // if there is no items in the linked list, just add it
-      if (!queue.items) {
-        console.log("adding node:", { ...n });
-        queue.add(n);
-        added = true;
-        continue;
-      }
-
       const rootId = queue.head?.value?.id || start.id;
 
       // loop over edges to find connected nodes
