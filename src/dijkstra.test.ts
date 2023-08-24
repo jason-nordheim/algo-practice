@@ -10,13 +10,37 @@ describe("dijksta - basic graph", () => {
   const F = new Node("F", []);
   const G = new Node("G", []);
   const Nodes = [A, B, C, D, E];
-  
+
   describe("errors", () => {
     it("throws if start node is not in the graph", () => {
       expect(() => dijkstra(F, A, Nodes)).toThrowError(ERROR_MESSAGES.START_NODE_NOT_IN_GRAPH);
     });
     it("throws if end node is not in the graph", () => {
       expect(() => dijkstra(A, G, Nodes)).toThrowError(ERROR_MESSAGES.END_NODE_NOT_IN_GRAPH);
+    });
+  });
+
+  describe("failure", () => {
+    const addSpy = jest.spyOn(LinkedList.prototype, "add");
+    // @ts-expect-error private method
+    const sortSpy = jest.spyOn(LinkedList.prototype, "sort");
+    it("processes all the nodes", () => {
+      const { sortedList } = dijkstra(A, F, [F, ...Nodes]);
+      const count = Nodes.length + 1;
+      expect(sortedList.length).toBe(count);
+      expect(addSpy).toHaveBeenCalledTimes(count);
+      expect(sortSpy).toHaveBeenCalledTimes(count);
+    });
+
+    it.only('unconnected nodes are set to "Infinity"', () => {
+      const { sortedList } = dijkstra(A, F, [F, ...Nodes]);
+      sortedList.forEach((item) => {
+        if (item.id == F.id) {
+          expect(item.distanceFromRoot).toBe(Infinity);
+        } else {
+          expect(item.distanceFromRoot).not.toBe(Infinity);
+        }
+      });
     });
   });
 

@@ -79,14 +79,15 @@ export const dijkstra = (start: Node, end: Node, graph: Node[]) => {
   while (convertedNodes?.length > 0) {
     const n = convertedNodes.shift();
     if (n) {
-      const rootId = queue.head?.value?.id || n.id;
       // handle the first node getting added to the LinkedList
-      if (queue.items.length == 0 || rootId == n.id || n.id === start.id) {
+      if (n.id === start.id) {
         n.distanceFromRoot = 0;
         console.log("adding node:", { ...n });
         queue.add(n);
         continue;
       }
+
+      const rootId = queue.head?.value?.id || n.id;
 
       // loop over edges to find connected nodes
       if (n.edges) {
