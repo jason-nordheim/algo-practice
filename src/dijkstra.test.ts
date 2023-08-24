@@ -9,31 +9,31 @@ describe("dijksta - basic graph", () => {
   const E = new Node("E", [new Edge("B", 4)]);
   const F = new Node("F", []);
   const G = new Node("G", []);
-  const Nodes = [A, B, C, D, E];
 
   describe("errors", () => {
+    const nodes = [A, B, C, D, E];
     it("throws if start node is not in the graph", () => {
-      expect(() => dijkstra(F, A, Nodes)).toThrowError(ERROR_MESSAGES.START_NODE_NOT_IN_GRAPH);
+      expect(() => dijkstra(F, A, nodes)).toThrowError(ERROR_MESSAGES.START_NODE_NOT_IN_GRAPH);
     });
     it("throws if end node is not in the graph", () => {
-      expect(() => dijkstra(A, G, Nodes)).toThrowError(ERROR_MESSAGES.END_NODE_NOT_IN_GRAPH);
+      expect(() => dijkstra(A, G, nodes)).toThrowError(ERROR_MESSAGES.END_NODE_NOT_IN_GRAPH);
     });
   });
 
-  describe("failure", () => {
+  describe("with unconnected node(s)", () => {
+    const nodes = [A, B, C, D, E, F];
     const addSpy = jest.spyOn(LinkedList.prototype, "add");
     // @ts-expect-error private method
     const sortSpy = jest.spyOn(LinkedList.prototype, "sort");
     it("processes all the nodes", () => {
-      const { sortedList } = dijkstra(A, F, [F, ...Nodes]);
-      const count = Nodes.length + 1;
-      expect(sortedList.length).toBe(count);
-      expect(addSpy).toHaveBeenCalledTimes(count);
-      expect(sortSpy).toHaveBeenCalledTimes(count);
+      const { sortedList } = dijkstra(A, F, nodes);
+      expect(sortedList.length).toBe(nodes.length);
+      expect(addSpy).toHaveBeenCalledTimes(nodes.length);
+      expect(sortSpy).toHaveBeenCalledTimes(nodes.length);
     });
 
-    it.only('unconnected nodes are set to "Infinity"', () => {
-      const { sortedList } = dijkstra(A, F, [F, ...Nodes]);
+    it('unconnected nodes are set to "Infinity"', () => {
+      const { sortedList } = dijkstra(A, F, nodes);
       sortedList.forEach((item) => {
         if (item.id == F.id) {
           expect(item.distanceFromRoot).toBe(Infinity);
@@ -44,27 +44,28 @@ describe("dijksta - basic graph", () => {
     });
   });
 
-  describe("success", () => {
+  describe("with all connected nodes", () => {
+    const nodes = [A, B, C, D, E];
     const addSpy = jest.spyOn(LinkedList.prototype, "add");
     // @ts-expect-error private method
     const sortSpy = jest.spyOn(LinkedList.prototype, "sort");
 
     it("processes all the nodes", () => {
-      const { sortedList } = dijkstra(A, D, Nodes);
-      expect(sortedList.length).toBe(Nodes.length);
-      expect(addSpy).toHaveBeenCalledTimes(Nodes.length);
-      expect(sortSpy).toHaveBeenCalledTimes(Nodes.length);
+      const { sortedList } = dijkstra(A, D, nodes);
+      expect(sortedList.length).toBe(nodes.length);
+      expect(addSpy).toHaveBeenCalledTimes(nodes.length);
+      expect(sortSpy).toHaveBeenCalledTimes(nodes.length);
     });
 
     it("sets the distance from start for each node", () => {
-      const { sortedList } = dijkstra(A, D, Nodes);
+      const { sortedList } = dijkstra(A, D, nodes);
       sortedList.forEach((item) => {
         expect(item.distanceFromRoot).not.toBe(Infinity);
       });
     });
 
     it("correctly orders the list", () => {
-      const { sortedList } = dijkstra(A, D, Nodes);
+      const { sortedList } = dijkstra(A, D, nodes);
       expect(sortedList[0].id).toBe(A.id);
       expect(sortedList[1].id).toBe(B.id);
       expect(sortedList[2].id).toBe(C.id);
@@ -73,7 +74,7 @@ describe("dijksta - basic graph", () => {
     });
 
     it("correctly determines the distance to start", () => {
-      const { sortedList } = dijkstra(A, D, Nodes);
+      const { sortedList } = dijkstra(A, D, nodes);
       expect(sortedList[0].distanceFromRoot).toBe(0);
       expect(sortedList[1].distanceFromRoot).toBe(5);
       expect(sortedList[2].distanceFromRoot).toBe(8);
@@ -82,7 +83,7 @@ describe("dijksta - basic graph", () => {
     });
 
     it("correctly determines the minimum distance", () => {
-      const { distance } = dijkstra(A, D, Nodes);
+      const { distance } = dijkstra(A, D, nodes);
       expect(distance).toBe(12);
     });
   });

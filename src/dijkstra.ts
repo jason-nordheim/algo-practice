@@ -78,25 +78,36 @@ export const dijkstra = (start: Node, end: Node, graph: Node[]) => {
   // add all the items to the linked list
   while (convertedNodes?.length > 0) {
     const n = convertedNodes.shift();
+    let added = false;
     if (n) {
       // handle the first node getting added to the LinkedList
       if (n.id === start.id) {
         n.distanceFromRoot = 0;
         console.log("adding node:", { ...n });
         queue.add(n);
+        added = true;
         continue;
       }
 
-      const rootId = queue.head?.value?.id || n.id;
+      // if there is no items in the linked list, just add it
+      if (!queue.items) {
+        console.log("adding node:", { ...n });
+        queue.add(n);
+        added = true;
+        continue;
+      }
+
+      const rootId = queue.head?.value?.id || start.id;
 
       // loop over edges to find connected nodes
-      if (n.edges) {
+      if (n.edges && rootId) {
         for (let i = 0; i < n.edges.length; i++) {
           // do any edges connect to the root of the graph?
           if (n.edges[i].to === rootId) {
             n.distanceFromRoot = n.edges[i].weight;
             console.log("adding node:", { ...n });
             queue.add(n);
+            added = true;
             continue;
           }
 
@@ -110,14 +121,15 @@ export const dijkstra = (start: Node, end: Node, graph: Node[]) => {
               const distance = n.edges[i].weight + connectedNode.value.distanceFromRoot;
               n.distanceFromRoot = distance;
               queue.add(n);
+              added = true;
               continue;
             }
           }
         }
-      } else {
-        console.log("adding node", { ...n });
+      }
+      if (!added) {
+        console.log("adding node:", { ...n });
         queue.add(n);
-        continue;
       }
     }
   }
