@@ -25,5 +25,6 @@ export const binarySearch = (arr: number[], target: number): number => {
     }
   }
 
-  return -1; // Target not found
+  // Target not found
+  return -1;
 };
