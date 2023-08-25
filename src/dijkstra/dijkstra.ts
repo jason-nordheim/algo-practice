@@ -1,33 +1,5 @@
-export class GraphNode {
-  id: string;
-  neighbors: Map<GraphNode, number>;
-
-  constructor(id: string) {
-    this.id = id;
-    this.neighbors = new Map();
-  }
-
-  addNeighbor(neighbor: GraphNode, weight: number) {
-    this.neighbors.set(neighbor, weight);
-  }
-}
-
-export class PriorityQueue<T> {
-  elements: [T, number][] = [];
-
-  enqueue(element: T, priority: number) {
-    this.elements.push([element, priority]);
-    this.elements.sort((a, b) => a[1] - b[1]);
-  }
-
-  dequeue(): T | undefined {
-    return this.elements.shift()?.[0];
-  }
-
-  isEmpty(): boolean {
-    return this.elements.length === 0;
-  }
-}
+import { GraphNode } from "./GraphNode";
+import { PriorityQueue } from "./PriorityQueue";
 
 export const dijkstra = (start: GraphNode, target: GraphNode): GraphNode[] | undefined => {
   const distances = new Map<GraphNode, number>();
@@ -81,3 +53,4 @@ export const dijkstra = (start: GraphNode, target: GraphNode): GraphNode[] | und
 
   return undefined;
 };
+
