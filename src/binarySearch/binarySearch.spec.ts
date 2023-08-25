@@ -1,6 +1,6 @@
 import { binarySearch } from "./binarySearch";
 
-describe("binary search", () => {
+describe("Binary Search", () => {
   it.each([
     [9, 4],
     [17, 8],
