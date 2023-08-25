@@ -1,3 +1,7 @@
+/**finds an item from a sorted list by repeatedly
+ * dividing in half the portion of the portion of items that could
+ * contain the target item until the relevant portion contains only
+ * the target item */
 export const binarySearch = (arr: number[], target: number): number => {
   let left = 0;
   let right = arr.length - 1;
