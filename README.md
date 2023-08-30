@@ -28,6 +28,8 @@ Every algorithm is accompanied with js doc comments that explain:
   - Bubble Sort
   - Selection Sort
   - Insertion Sort
+  - Merge Sort
+  - Quick Sort
 
 ## Running the tests
 
