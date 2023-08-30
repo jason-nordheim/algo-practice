@@ -3,6 +3,7 @@
  * @description recursive function that breaks the main array into
  * sub arrays, then sorts them and merge them back together
  * - Time Complexity: O(n(log(n))) "Quasilinear time" (almost linear)
+ * - Fun Fact: This is the sorting method using by the Array.prototype.sort() function in JavaScript
  * @param arr the array to be sorted
  */
 export const mergeSort = (arr: number[]): number[] => {
