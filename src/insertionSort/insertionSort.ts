@@ -1,6 +1,7 @@
 /**
  * Builds up a sorted array one element at a time.
  * Optimized for data already "mostly sorted"
+ * - Time Complexity: O(n²) "Quadratic"
  * @param arr
  * @returns
  */
