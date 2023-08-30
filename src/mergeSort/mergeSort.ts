@@ -4,6 +4,8 @@
  * sub arrays, then sorts them and merge them back together
  * - Time Complexity: O(n(log(n))) "Quasilinear time" (almost linear)
  * - Fun Fact: This is the sorting method using by the Array.prototype.sort() function in JavaScript
+ * - Pros: Linear runtime
+ * - Cons: More memory intensive than other sorting techniques
  * @param arr the array to be sorted
  */
 export const mergeSort = (arr: number[]): number[] => {
