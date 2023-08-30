@@ -2,7 +2,7 @@
  * Sorting algorithm that works by finding the smallest element
  * in the array and exchanging it with the element at the beginning
  * of the array and repeating the process until the array is fully sorted
- * - Time Complexity
+ * - Time Complexity O(n²) "Quadratic"
  * @param arr array to be sorted
  */
 export const selectionSort = (arr: number[]) => {
