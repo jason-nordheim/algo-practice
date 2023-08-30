@@ -1,6 +1,10 @@
 import { GraphNode } from "./GraphNode";
 import { PriorityQueue } from "./PriorityQueue";
 
+/**
+ * algorithm to find the shortest path between a series of nodes in a graph
+ * - Time Complexity: O((V +E) log V) -> V = Vertices, E = Edges
+ */
 export const dijkstra = (start: GraphNode, target: GraphNode): GraphNode[] | undefined => {
   const distances = new Map<GraphNode, number>();
   const previousNodes = new Map<GraphNode, GraphNode | null>();
@@ -53,4 +57,3 @@ export const dijkstra = (start: GraphNode, target: GraphNode): GraphNode[] | und
 
   return undefined;
 };
-
