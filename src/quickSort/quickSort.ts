@@ -2,7 +2,7 @@
  * @description Sorting function that uses a pivot element
  * to create sub arrays that are sorted recursively
  * - Divide and Conquer algorithm
- * - Time Complexity: O(n(log(n)))"Quasilinear time" (almost linear)
+ * - Time Complexity: O(n(log(n))) "Quasilinear time" (almost linear)
  * @param arr array to be sorted
  */
 export const quickSort = (arr: number[]): number[] => {
