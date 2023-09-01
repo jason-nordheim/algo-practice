@@ -30,6 +30,7 @@ Every algorithm is accompanied with js doc comments that explain:
   - Insertion Sort
   - Merge Sort
   - Quick Sort
+  - Radix Sort (LSD)
 
 ## Running the tests
 
