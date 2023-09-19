@@ -22,9 +22,9 @@ Every algorithm is accompanied with js doc comments that explain:
 
 - Searching
   - Binary Search
-- Pathfinding
+- Pathfinding (located in `src/pathfinding/<algorithmName>/`)
   - Dijkstra
-- Sorting
+- Sorting (located in `src/sortingAlgorithms/<algorithmName>/`)
   - Bubble Sort
   - Selection Sort
   - Insertion Sort
