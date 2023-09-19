@@ -31,6 +31,8 @@ Every algorithm is accompanied with js doc comments that explain:
   - Merge Sort
   - Quick Sort
   - Radix Sort (LSD)
+- leetCode (directory containing leetcode problems/solutions with tests)
+  - maxSubsequence
 
 ## Running the tests
 
