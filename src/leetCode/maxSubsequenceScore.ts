@@ -13,6 +13,13 @@
  * 2) 1 <= n <= 10^5
  * 3) 0 <= nums1[i], nums2[j] <= 105
  * 4) 1 <= k <= n
+ *
+ * Solution:
+ * 1) Implemented using binary search
+ * 2) Time Complexity => O(log(k) * n)
+ *    - k = desired length of subsequence
+ *    - n = the length of the input arrays
+ * 3) Space Complexity => O(1) (e.g. "constant")
  */
 export const maxScore = (nums1: number[], nums2: number[], k: number): number => {
   // return maxScore;
