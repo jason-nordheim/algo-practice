@@ -22,15 +22,17 @@ Every algorithm is accompanied with js doc comments that explain:
 
 - Searching
   - Binary Search
-- Pathfinding
+- Pathfinding (located in `src/pathfinding/<algorithmName>/`)
   - Dijkstra
-- Sorting
+- Sorting (located in `src/sortingAlgorithms/<algorithmName>/`)
   - Bubble Sort
   - Selection Sort
   - Insertion Sort
   - Merge Sort
   - Quick Sort
   - Radix Sort (LSD)
+- leetCode (directory containing leetcode problems/solutions with tests)
+  - maxSubsequence
 
 ## Running the tests
 
