@@ -1,11 +1,23 @@
 # About this Repository
 
-This is a pretty bare-bones repository containing common algorithms implemented using [TypeScript](https://www.typescriptlang.org/) and [jest](https://jestjs.io/) for testing.
+This is a pretty bare-bones repository containing common algorithms implemented using [TypeScript](https://www.typescriptlang.org/) and (`bun`)[https://bun.sh/] for compilation and testing.
 
 The folder structure is as follows:
 
 ```
+.gitignore
+bun.lockb                 <-- bun lock file
+package.json
 src/
+  /dynamicProgramming/    <-- directory containing dynamic programming problems/solutions/tests
+    [problemName].ts
+    [problemName].test.ts
+  /leetCode/              <-- directory containing leetcode problems/solutions/tests
+    [problemName].ts
+    [problemName].test.ts
+  /pathfinding/
+    [algorithmName].ts
+    [algorithmName].test.ts
   [algorithmName]/
     [algorithmName].ts      <-- sorting function
     [algorithmName].test.ts <-- test for the algorithm
