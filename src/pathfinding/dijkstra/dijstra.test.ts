@@ -1,3 +1,4 @@
+import { describe, expect, test } from "bun:test";
 import { GraphNode } from "./GraphNode";
 import { dijkstra } from "./dijkstra";
 
@@ -12,14 +13,14 @@ describe("Dijkstra's Algorithm", () => {
   nodeB.addNeighbor(nodeD, 3);
   nodeC.addNeighbor(nodeD, 1);
 
-  it("should find the shortest path between two nodes", () => {
+  test("should find the shortest path between two nodes", () => {
     const path = dijkstra(nodeA, nodeD);
     const pathIds = path!.map((node) => node.id);
 
     expect(pathIds).toEqual(["A", "C", "D"]);
   });
 
-  it("should handle when no path exists", () => {
+  test("should handle when no path exists", () => {
     const path = dijkstra(nodeB, nodeC);
 
     expect(path).toBeUndefined();

@@ -1,7 +1,8 @@
+import { describe, expect, test } from "bun:test";
 import { minimumCoins } from "./coinProblem";
 
 describe("the coin problem", () => {
-  it.each([
+  test.each([
     [1, 1],
     [2, 2],
     [5, 1],
