@@ -27,7 +27,6 @@ export const minimumCoins = (amountInCents: number, seen: SeenMap = {}, coins: n
   let min = Infinity;
   for (let i = coins.length - 1; i > -1; i--) {
     const coin = coins[i];
-    console.log(coin);
     if (coin <= amountInCents) {
       const minCoins = Math.floor(amountInCents / coin);
       if (minCoins > 0) {
