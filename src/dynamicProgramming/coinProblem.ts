@@ -8,7 +8,7 @@ const COINS = {
 
 /**
  * This algorithm is designed to calculate the minimum required number of coins
- * to reach a desired value
+ * to reach a desired value recursively (inefficient)
  * @param target desired sum of coins
  * @param sortedCoins array of available coins
  * @returns the minimum number of coins required
