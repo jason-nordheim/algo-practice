@@ -36,4 +36,12 @@ Every algorithm is accompanied with js doc comments that explain:
 
 ## Running the tests
 
+**Important**: This project is setup to use (`bun`)[https://bun.sh/] which is currently only supported on macOS, Linux and (WSL)[https://learn.microsoft.com/en-us/windows/wsl/install]. So in order to run this project on a windows machine, you must be in WSL.
+
+1. Installing Bun: Run `curl -fsSL https://bun.sh/install | bash` from the command line.
+2. Run `bun install` to add the packages to `node_modules`
+3. Run `bun test` to run the tests
+
 Since there is no UI, the only available command is `npm run test`.
+
+> If you would like a code coverage report, run: `bun coverage`
