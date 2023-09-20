@@ -45,3 +45,54 @@ export const minimumCoins = (amountInCents: number, seen: SeenMap = {}, coins: n
 
   return min;
 };
+
+/**
+ * Provides the minimum number of coins required to reach the desired value
+ * @param coins available coins (must be an integer)
+ * @param amount goal amount
+ * @returns minimum number of coins
+ */
+export function coinChange(coins: number[], amount: number): number {
+  if (!Number.isInteger(amount)) {
+    throw new Error("Amount must be an integer");
+  }
+
+  for (const coin of coins) {
+    if (!Number.isInteger(coin)) {
+      throw new Error("Coin values must all be integers");
+    }
+  }
+
+  let dp: number[] = [0];
+
+  for (let targetAmount = 1; targetAmount <= amount; targetAmount++) {
+    // what is the minimum amount of coins it takes to get to targetAmount?
+    let minCoinsToMakeAmount: number = Infinity;
+    for (let coinIndex = 0; coinIndex < coins.length; coinIndex++) {
+      if (coins[coinIndex] === targetAmount) {
+        minCoinsToMakeAmount = 1;
+        break;
+      }
+
+      // If we absolutely used the coin at coinIndex to make our target amount,
+      // then then we need to calculate steps it takes to get to dp[targetAmount - currentCoin] + 1
+      const complimentAmount: number = targetAmount - coins[coinIndex];
+
+      // check if we can make this amount, if coin is higher than target amount or we haven't calculated how to get to
+      // compliment yet, we can't make it
+      if (complimentAmount < 0 || complimentAmount >= dp.length) {
+        continue;
+      }
+
+      const coinsToMakeTargetAmount: number = 1 + dp[complimentAmount];
+
+      if (coinsToMakeTargetAmount < minCoinsToMakeAmount) {
+        minCoinsToMakeAmount = coinsToMakeTargetAmount;
+      }
+    }
+
+    dp[targetAmount] = minCoinsToMakeAmount;
+  }
+
+  return dp[amount] === Infinity ? -1 : dp[amount];
+}
