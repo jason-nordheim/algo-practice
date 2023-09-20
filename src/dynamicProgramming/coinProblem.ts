@@ -62,7 +62,7 @@ export function coinChange(coins: number[], amount: number): number {
     }
   }
 
-  let dp: number[] = [0];
+  const seen: number[] = [0];
 
   for (let targetAmount = 1; targetAmount <= amount; targetAmount++) {
     // what is the minimum amount of coins it takes to get to targetAmount?
@@ -79,19 +79,19 @@ export function coinChange(coins: number[], amount: number): number {
 
       // check if we can make this amount, if coin is higher than target amount or we haven't calculated how to get to
       // compliment yet, we can't make it
-      if (complimentAmount < 0 || complimentAmount >= dp.length) {
+      if (complimentAmount < 0 || complimentAmount >= seen.length) {
         continue;
       }
 
-      const coinsToMakeTargetAmount: number = 1 + dp[complimentAmount];
+      const coinsToMakeTargetAmount: number = 1 + seen[complimentAmount];
 
       if (coinsToMakeTargetAmount < minCoinsToMakeAmount) {
         minCoinsToMakeAmount = coinsToMakeTargetAmount;
       }
     }
 
-    dp[targetAmount] = minCoinsToMakeAmount;
+    seen[targetAmount] = minCoinsToMakeAmount;
   }
 
-  return dp[amount] === Infinity ? -1 : dp[amount];
+  return seen[amount] === Infinity ? -1 : seen[amount];
 }
