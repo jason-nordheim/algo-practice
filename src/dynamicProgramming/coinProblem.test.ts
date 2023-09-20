@@ -1,7 +1,15 @@
 import { minimumCoins } from "./coinProblem";
 
 describe("the coin problem", () => {
-  it.each([[0.75, 3]])("minimumCoins(%d) returns %d", (target, expectedCoins) => {
-    expect(minimumCoins(target)).toEqual(expectedCoins);
+  it.each([
+    [1, 1],
+    [2, 2],
+    [5, 1],
+    [10, 1],
+    [11, 2],
+    [55, 3],
+    [74, 8],
+  ])("getMinUnder(%d) returns %d", (cents, numCoinsUnder) => {
+    expect(minimumCoins(cents)).toEqual(numCoinsUnder);
   });
 });
