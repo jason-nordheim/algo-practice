@@ -6,34 +6,42 @@ const COINS = {
   DOLLAR: 1,
 };
 
+export const AVAILABLE_COINS = [COINS.PENNY, COINS.NICKEL, COINS.DIME, COINS.QUARTER, COINS.DOLLAR];
+
+type SeenMap = { [k: number]: number };
+
+const factoredCoins = AVAILABLE_COINS.map((x) => x * 100);
+
 /**
- * This algorithm is designed to calculate the minimum required number of coins
- * to reach a desired value
- * @param target desired sum of coins
- * @param sortedCoins array of available coins
- * @returns the minimum number of coins required
+ * Dynamic Programming example of getting the minimum value of coins
+ * @param amountInCents
+ * @param seen
+ * @param coins
+ * @returns
  */
-export const minimumCoins = (
-  target: number,
-  sortedCoins = [COINS.PENNY, COINS.NICKEL, COINS.DIME, COINS.QUARTER, COINS.DOLLAR],
-  index: number = 4,
-  count: number = 0
-): number => {
-  if (target === 0) return 0;
-
-  const currentCoin = sortedCoins[index];
-
-  if (currentCoin > target) {
-    return minimumCoins(target, sortedCoins, index - 1, count);
+export const minimumCoins = (amountInCents: number, seen: SeenMap = {}, coins: number[] = factoredCoins): number => {
+  if (seen[amountInCents]) {
+    return seen[amountInCents];
   }
 
-  if (currentCoin === target) {
-    return count;
+  let min = Infinity;
+  for (let i = coins.length - 1; i > -1; i--) {
+    const coin = coins[i];
+    console.log(coin);
+    if (coin <= amountInCents) {
+      const minCoins = Math.floor(amountInCents / coin);
+      if (minCoins > 0) {
+        const coinsValue = minCoins * coin;
+        const centsFromTarget = amountInCents - coinsValue;
+        if (centsFromTarget > 0) {
+          const remainingCoinsNeeded = minimumCoins(centsFromTarget, seen, coins);
+          min = Math.min(minCoins + remainingCoinsNeeded, min);
+        } else {
+          min = Math.min(minCoins, min);
+        }
+      }
+    }
   }
 
-  if (target - currentCoin - currentCoin < target) {
-    return count + minimumCoins(target - currentCoin, sortedCoins, index, count + 1);
-  }
-
-  return count + minimumCoins(target - currentCoin, sortedCoins, index--, count + 1);
+  return min;
 };

@@ -1,11 +1,23 @@
 # About this Repository
 
-This is a pretty bare-bones repository containing common algorithms implemented using [TypeScript](https://www.typescriptlang.org/) and [jest](https://jestjs.io/) for testing.
+This is a pretty bare-bones repository containing common algorithms implemented using [TypeScript](https://www.typescriptlang.org/) and [`bun`](https://bun.sh/) for compilation and testing.
 
 The folder structure is as follows:
 
 ```
+.gitignore
+bun.lockb                 <-- bun lock file
+package.json
 src/
+  /dynamicProgramming/    <-- directory containing dynamic programming problems/solutions/tests
+    [problemName].ts
+    [problemName].test.ts
+  /leetCode/              <-- directory containing leetcode problems/solutions/tests
+    [problemName].ts
+    [problemName].test.ts
+  /pathfinding/
+    [algorithmName].ts
+    [algorithmName].test.ts
   [algorithmName]/
     [algorithmName].ts      <-- sorting function
     [algorithmName].test.ts <-- test for the algorithm
@@ -36,7 +48,7 @@ Every algorithm is accompanied with js doc comments that explain:
 
 ## Running the tests
 
-**Important**: This project is setup to use (`bun`)[https://bun.sh/] which is currently only supported on macOS, Linux and (WSL)[https://learn.microsoft.com/en-us/windows/wsl/install]. So in order to run this project on a windows machine, you must be in WSL.
+**Important**: This project is setup to use [`bun`](https://bun.sh/) which is currently only supported on macOS, Linux and [WSL](https://learn.microsoft.com/en-us/windows/wsl/install). So in order to run this project on a windows machine, you must be in WSL.
 
 1. Installing Bun: Run `curl -fsSL https://bun.sh/install | bash` from the command line.
 2. Run `bun install` to add the packages to `node_modules`
