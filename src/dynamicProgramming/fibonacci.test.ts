@@ -1,3 +1,4 @@
+import { describe, expect, test } from "bun:test";
 import { fibonacci, memoizedFibonacci } from "./fibonacci";
 
 const SMALL_FIBS: [number, number][] = [
@@ -9,11 +10,11 @@ const SMALL_FIBS: [number, number][] = [
   [7, 13],
 ];
 
-describe("functionality", () => {
-  it.each(SMALL_FIBS)("fibonacci(%d)  returns %d", (nthNumber, expectedResult) => {
+describe("functionaltesty", () => {
+  test.each(SMALL_FIBS)("fibonacci(%d)  returns %d", (nthNumber, expectedResult) => {
     expect(fibonacci(nthNumber)).toEqual(expectedResult);
   });
-  it.each(SMALL_FIBS)("fibinacci(%d) returns %d", (nthNumber, expectedResult) => {
+  test.each(SMALL_FIBS)("fibinacci(%d) returns %d", (nthNumber, expectedResult) => {
     expect(memoizedFibonacci(nthNumber)).toEqual(expectedResult);
   });
 });
@@ -25,7 +26,7 @@ const LARGE_FIBS: [number, number][] = [
 ];
 
 describe("performance", () => {
-  it.each(LARGE_FIBS)(
+  test.each(LARGE_FIBS)(
     "When running both functions, memoizedFibonacci finishes in less time",
     async (nthNumber, expectedResult) => {
       const calculate = async () => {
