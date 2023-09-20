@@ -1,5 +1,5 @@
 /**
- * Recursive algorithm for calculating the nth fibonacci number
+ * Recursive algorithm for calculating the nth fibonacci number (top-down approach)
  * @param n request fibonacci number
  * @returns the nth fibonacci number
  */
@@ -11,7 +11,7 @@ export const fibonacci = (n: number): number => {
 };
 
 /**
- * Memoized version of the algorithm for finding the nth fibonacci number
+ * Memoized version of the algorithm for finding the nth fibonacci number (top-down approach)
  * @param n request fibonacci number
  * @param seen map of previously seen fibonacci numbers
  * @returns the nth fibonacci number
