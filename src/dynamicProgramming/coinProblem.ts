@@ -74,11 +74,11 @@ export function coinChange(coins: number[], amount: number): number {
       }
 
       // If we absolutely used the coin at coinIndex to make our target amount,
-      // then then we need to calculate steps it takes to get to dp[targetAmount - currentCoin] + 1
+      // then then we need to calculate steps it takes to get to seen[targetAmount - currentCoin] + 1
       const complimentAmount: number = targetAmount - coins[coinIndex];
 
-      // check if we can make this amount, if coin is higher than target amount or we haven't calculated how to get to
-      // compliment yet, we can't make it
+      // check if we can make this amount, if coin is higher than target amount
+      // or we haven't calculated how to get to compliment yet, we can't make it
       if (complimentAmount < 0 || complimentAmount >= seen.length) {
         continue;
       }
