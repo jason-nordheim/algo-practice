@@ -24,23 +24,18 @@
 export function lengthOfLongestSubstring(s: string): number {
   if (s.length == 0) return 0;
 
-  const charMaps: Map<string, number>[] = [new Map()];
-  charMaps[0].set(s[0], 0);
-
-  for (let i = 1; i < s.length; i++) {
-    const latestMapIdx = charMaps.length - 1;
-    if (!charMaps[latestMapIdx].has(s[i])) {
-      const lastCharIdx = charMaps[latestMapIdx].get(s[i - 1]);
-      if (lastCharIdx === i - 1) {
-        charMaps[latestMapIdx].set(s[i], i);
-      }
-    } else {
-      charMaps.push(new Map());
-      charMaps[charMaps.length - 1].set(s[i - 1], i - 1);
-      charMaps[charMaps.length - 1].set(s[i], i);
+  let m = new Map();
+  let longest = 0;
+  let maxIdx = 0;
+  for (let idx = 0; idx < s.length; idx++) {
+    const char = s[idx];
+    const prev = m.get(char);
+    if (prev >= maxIdx) {
+      maxIdx = prev + 1;
     }
+    m.set(char, idx);
+    longest = Math.max(longest, idx - maxIdx + 1);
   }
 
-  const maxSubArraySize = charMaps.map((map) => map.size);
-  return Math.max(...maxSubArraySize);
+  return longest;
 }
