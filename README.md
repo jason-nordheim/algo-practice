@@ -44,8 +44,9 @@ Every algorithm is accompanied with js doc comments that explain:
   - Quick Sort
   - Radix Sort (LSD)
 - leetCode (directory containing leetcode problems/solutions with tests)
-  - [twoSum](https://leetcode.com/problems/two-sum/)
+  - [addTwoNumbers](https://leetcode.com/problems/add-two-numbers/)
   - maxSubsequence
+  - [twoSum](https://leetcode.com/problems/two-sum/)
 
 ## Running the tests
 
