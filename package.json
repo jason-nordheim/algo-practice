@@ -4,7 +4,8 @@
     "bun-types": "^1.0.2"
   },
   "scripts": {
-    "coverage": "bun test --coverage"
+    "coverage": "bun test --coverage",
+    "debug:test": "bun test --inspect"
   },
   "name": "algo-practice",
   "module": "index.ts",
