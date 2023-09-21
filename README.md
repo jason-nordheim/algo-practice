@@ -46,6 +46,7 @@ Every algorithm is accompanied with js doc comments that explain:
 - leetCode (directory containing leetcode problems/solutions with tests)
   - [addTwoNumbers](https://leetcode.com/problems/add-two-numbers/)
   - maxSubsequence
+  - [longestSubstring](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
   - [twoSum](https://leetcode.com/problems/two-sum/)
 
 ## Running the tests
