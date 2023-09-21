@@ -63,7 +63,8 @@ export const minCostForTickets = (days: number[], costs: number[]) => {
         table[tripDur] = [
           // number of days
           compliment[0] + multiples,
-          compliment[1] + multiples * prices[ticketLength],
+          // cost = cost of compliment +
+          (compliment[1] = compliment[1] + multiples * prices[ticketLength]),
         ];
       }
     }
