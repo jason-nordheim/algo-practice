@@ -19,7 +19,7 @@
  * Output: [8,9,9,9,0,0,0,1]
  */
 
-class ListNode<T> {
+export class ListNode<T> {
   val: T;
   next?: ListNode<T>;
   constructor(val: T, next?: ListNode<T>) {
