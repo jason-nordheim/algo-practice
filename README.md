@@ -44,6 +44,7 @@ Every algorithm is accompanied with js doc comments that explain:
   - Quick Sort
   - Radix Sort (LSD)
 - leetCode (directory containing leetcode problems/solutions with tests)
+  - [isPalindrome](https://leetcode.com/problems/palindrome-number/)
   - maxSubsequence
 
 ## Running the tests
