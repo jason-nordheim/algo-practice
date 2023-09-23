@@ -20,17 +20,13 @@
  * Constraints:
  * -2^31 <= x <= 2^31 - 1
  */
-export function isPalindrome(x: number): boolean {
-  if (x < 0) return false;
-  if (x < 10) return true;
-
-  let reversed = 0;
-  let candidate = x;
-
-  while (candidate > reversed) {
-    reversed = reversed * 10 + (candidate % 10);
-    candidate = candidate / 10;
+export function isPalindrome(n: number): boolean {
+  let rev = 0;
+  let temp = n;
+  while (temp > 0) {
+    rev *= 10;
+    rev += temp % 10;
+    temp = Math.floor(temp / 10);
   }
-
-  return reversed == x || x == reversed / 10;
+  return rev === n;
 }

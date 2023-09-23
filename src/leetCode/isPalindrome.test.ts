@@ -7,6 +7,7 @@ const TEST_CASES: [number, boolean][] = [
   [-2, false],
   [121, true],
   [123, false],
+  [1331, true],
 ];
 
 describe("isPalindrome", () => {
