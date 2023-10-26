@@ -49,6 +49,7 @@ Every algorithm is accompanied with js doc comments that explain:
   - [longestSubstring](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
   - [longestCommonPrefix](https://leetcode.com/problems/longest-common-prefix/)
   - [twoSum](https://leetcode.com/problems/two-sum/)
+  - [medianOfTwoArrays](https://leetcode.com/problems/median-of-two-sorted-arrays/)
 
 ## Running the tests
 
