@@ -44,8 +44,12 @@ Every algorithm is accompanied with js doc comments that explain:
   - Quick Sort
   - Radix Sort (LSD)
 - leetCode (directory containing leetcode problems/solutions with tests)
-  - [twoSum](https://leetcode.com/problems/two-sum/)
+  - [addTwoNumbers](https://leetcode.com/problems/add-two-numbers/)
   - maxSubsequence
+  - [longestSubstring](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+  - [longestCommonPrefix](https://leetcode.com/problems/longest-common-prefix/)
+  - [twoSum](https://leetcode.com/problems/two-sum/)
+  - [medianOfTwoArrays](https://leetcode.com/problems/median-of-two-sorted-arrays/)
 
 ## Running the tests
 
